@@ -15,5 +15,5 @@ do
     docker images
     STATUS=$?
 done
-docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -e PASSWORD=xxxx -v $HOME/.ecdata:/root -p 127.0.0.1:5901:5901 -p 127.0.0.1:1080:1080 hagb/docker-easyconnect
+docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -e PASSWORD=xxAABB -v $HOME/.ecdata:/root -p 127.0.0.1:5901:5901 -p 127.0.0.1:10800:10800 toobe/docker-easyconnect
 # Then you can connect with vnc client

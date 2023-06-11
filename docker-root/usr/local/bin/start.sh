@@ -48,7 +48,7 @@ fi
 internals=""
 externals=""
 for iface in $(ip -o addr | sed -E 's/^[0-9]+: ([^ ]+) .*/\1/' | sort | uniq | grep -v "lo\|sit\|vir"); do
-        internals="${internals}internal: $iface port = 1080\\n"
+        internals="${internals}internal: $iface port = 10800\\n"
         externals="${externals}external: $iface\\n"
 done
 sed /^internal:/c"$internals" -i /run/danted.conf
@@ -57,7 +57,7 @@ sed /^external:/a"$externals" -i /run/danted.conf
 [ -n "$NODANTED" ] || (while true
 do
 sleep 5
-open_port 1080
+open_port 10800
 [ -d /sys/class/net/tun0 ] && {
 	chmod a+w /tmp
 	/usr/sbin/danted -f /run/danted.conf
